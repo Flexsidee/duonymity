@@ -1,0 +1,124 @@
+<IfModule mod_headers.c>
+    Header always set Content-Security-Policy "upgrade-insecure-requests;"
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+ErrorDocument 404 https://www.duonymity.com/
+
+AddDefaultCharset UTF-8
+
+Header unset ETag
+
+FileETag None
+
+
+
+Options +FollowSymLinks -MultiViews
+
+RewriteEngine On
+
+
+
+RewriteCond %{SCRIPT_FILENAME} !-d
+
+RewriteCond %{SCRIPT_FILENAME} !-f
+
+
+
+RewriteRule    ^home/?$ index.php? [NC,L]
+
+RewriteRule    ^index/?$ index.php? [NC,L]
+
+RewriteRule    ^login/?$ login.php? [NC,L]
+
+RewriteRule    ^process_login/?$ process_login.php? [NC,L]
+
+RewriteRule    ^contact/?$ contact.php? [NC,L]
+
+RewriteRule    ^process_contact/?$ process_contact.php? [NC,L]
+
+RewriteRule    ^messages/?$ messages.php? [NC,L]
+
+RewriteRule    ^process_message/?$ process_messages.php? [NC,L]
+
+RewriteRule    ^profile/?$ profile.php? [NC,L]
+
+RewriteRule    ^register/?$ register.php? [NC,L]
+
+RewriteRule    ^process_register/?$ process_register.php? [NC,L]
+
+RewriteRule    ^settings/?$ settings.php? [NC,L]
+
+RewriteRule    ^legal/?$ legal.php? [NC,L]
+
+RewriteRule    ^send_message/?$ send_message.php? [NC,L]
+
+RewriteRule    ^change_username/?$ change_username.php? [NC,L]
+
+RewriteRule    ^change_username_p/?$ change_username_p.php? [NC,L]
+
+RewriteRule    ^change_password/?$ change_password.php? [NC,L]
+
+RewriteRule    ^change_password_p/?$ change_password_p.php? [NC,L]
+
+RewriteRule    ^logout/?$ logout.php? [NC,L]
+
+
+
+RewriteRule    ^AdminUser/?$ Admin/newAdmin.php?pg=Login [NC,L]
+
+RewriteRule    ^AdminHome/?$ Admin/UserHome.php? [NC,L]
+ 
+
+RewriteRule    ^([a-zA-Z0-9]+)$ send_message.php?username=$1  [NC,L] 
+
+RewriteRule    ^subject/([a-zA-Z0-9]+)$ index.php?subject=$1  [NC,L] 
+
+RewriteRule    ^Search/([a-zA-Z0-9]+)/page([0-9]+)$ Search.php?Search=$1&page=$2  [NC,L] 
+
+RewriteRule    ^Search/page([0-9]+)$ Search.php?page=$1  [NC,L] 
+
+RewriteRule    ^Search/([a-zA-Z0-9-]+)$ Search.php?Search=$1  [NC,L] 
+
+RewriteRule    ^Search/?$ Search.php  [NC,L] 
+
+RewriteRule    ^Search/?$ Search.php  [NC,L] 
+
+RewriteRule    ^AddBook/?$ AddBook.php  [NC,L] 
+
+RewriteRule    ^deleteBook/?$ DeleteBook.php  [NC,L] 
+
+RewriteRule    ^AddJournal/?$ AddJournal.php  [NC,L] 
+
+RewriteRule    ^AddReport/?$ AddReport.php  [NC,L] 
+
+RewriteRule    ^manage/?$ manage.php  [NC,L] 
+
+RewriteRule    ^login/?$ login.php  [NC,L] 
+
+RewriteRule    ^SearchJournal/?$ SearchJournal.php  [NC,L] 
+
+RewriteRule    ^SearchReport/?$ SearchReport.php  [NC,L] 
+
+RewriteRule    ^SaveJournal/?$ SaveJournal.php  [NC,L] 
+
+RewriteRule    ^SaveJournal/([0-9]+)$ SaveJournal.php?JID=$1  [NC,L] 
+
+RewriteRule    ^SaveReport/([0-9]+)$ SaveReport.php?PRID=$1  [NC,L] 
+
+RewriteRule    ^Journals/?$ Journals.php  [NC,L] 
+
+RewriteRule    ^Reports/page([0-9]+)$ Reports.php?page=$1  [NC,L] 
+
+RewriteRule    ^Reports/?$ Reports.php  [NC,L] 
+
+RewriteRule    ^Journals/page([0-9]+)$ Journals.php?page=$1  [NC,L] 
+
+
+RewriteRule ^page([0-9]+)$ index.php?page=$1 [NC,L]
+
+RewriteRule ^([a-zA-Z0-9]+)$ index.php?page=$1
+
+RewriteRule ^([a-zA-Z0-9]+)/$ index.php?page=$1
+
+</IfModule>
